@@ -5,6 +5,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { ConnectKitProvider } from "connectkit";
 import { RainbowKitProvider, getDefaultConfig, darkTheme } from '@rainbow-me/rainbowkit'
 import '@rainbow-me/rainbowkit/styles.css'
+import { avalancheFuji } from 'viem/chains';
 
 
 const lensTestnet = {
@@ -36,10 +37,11 @@ const lensTestnet = {
 export const config = getDefaultConfig({
     appName: 'Radish',
     projectId: '066465a4f5d400c9eccad76612f98c5a', // Get one at https://cloud.walletconnect.com
-    chains: [lensTestnet],
+    chains: [lensTestnet, avalancheFuji],
     transports: {
 
         [lensTestnet.id]: http(),
+        [avalancheFuji.id]: http(),
     }
 })
 

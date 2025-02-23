@@ -60,7 +60,7 @@ export const CustomConnectButton = ({
 
                             return (
                                 <div className="flex items-center gap-2">
-                                    <Button
+                                    {/* <Button
                                         onClick={show}
                                         variant="outline"
                                         size="sm"
@@ -70,7 +70,7 @@ export const CustomConnectButton = ({
                                         }
                                     >
                                         {chain.name}
-                                    </Button>
+                                    </Button> */}
 
                                     <Button
                                         onClick={show}

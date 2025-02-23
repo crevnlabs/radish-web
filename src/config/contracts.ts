@@ -1,5 +1,6 @@
 export const LENS_TESTNET_CHAIN_ID = 37111;
 
+export const AVALANCHE_TESTNET_CHAIN_ID = 43113;
 export const SUBGRAPH_URL: {
   [key: number]: string;
 } = {
@@ -11,6 +12,12 @@ export const CONTRACT_ADDRESSES: {
   [key: number]: { [key: string]: `0x${string}` };
 } = {
   [LENS_TESTNET_CHAIN_ID]: {
+    radishCore: "0xC139c07614ba4f82A41dECC3BeffdBfA2ad229dB",
+    mockERC20: "0x88b2DFA23505360b054baE96774b4e7C2D83ca08",
+    noToken: "0x939a843E55da283eD4209cF9a4122F37Aff4E6cb",
+    yesToken: "0xB7a6D76A6448B35aCfC8aDbe5E9D7FDBB3c1ebC2",
+  },
+  [AVALANCHE_TESTNET_CHAIN_ID]: {
     radishCore: "0xC139c07614ba4f82A41dECC3BeffdBfA2ad229dB",
     mockERC20: "0x88b2DFA23505360b054baE96774b4e7C2D83ca08",
     noToken: "0x939a843E55da283eD4209cF9a4122F37Aff4E6cb",

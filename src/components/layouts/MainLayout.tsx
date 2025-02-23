@@ -9,6 +9,7 @@ import { readContract } from "@wagmi/core";
 import { useEffect, useState } from "react";
 import { config } from "@/app/providers";
 import { CONTRACT_ADDRESSES, ERC20_ABI } from "@/config/contracts";
+import SwitchNetwork from "@/app/SwitchNetwork";
 
 
 function LensLogo() {
@@ -127,6 +128,7 @@ export default function Layout({
                                     )}
                                 </svg>
                             </button>
+                            <SwitchNetwork />
                             <CustomConnectButton />
                         </div>
                     </div>

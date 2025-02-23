@@ -39,4 +39,51 @@ export interface PriceBoxProps {
 export interface MarketStatsProps {
   volume: string;
   liquidity: string;
+}
+
+export interface Trade {
+  type: "buy" | "sell";
+  outcome: "yes" | "no";
+  amount: number;
+  price: number;
+  timestamp: string;
+  trader: string;
+}
+
+export interface MarketPageProps {
+  market: Market;
+  trades: Trade[];
+  activeTab: string;
+  onTabChange: (value: string) => void;
+}
+
+export interface TradingInterfaceProps {
+  market: Market;
+  activeTab: string;
+  onTrade: (type: "buy" | "sell") => Promise<void>;
+  onApprove: () => Promise<void>;
+  onAmountChange: (value: string) => Promise<void>;
+  onTabChange: (value: string) => void;
+  amount: string;
+  estimatedCost: number;
+  isLoading: boolean;
+  error?: Error;
+}
+
+export interface MarketHeaderProps {
+  title: string;
+  creatorHandle?: string;
+  target?: number;
+  onMint: () => Promise<void>;
+  isMintPending: boolean;
+  address?: string;
+}
+
+export interface RecentTradesProps {
+  trades: Trade[];
+}
+
+export interface ResolutionDialogProps {
+  isLoading: boolean;
+  onResolve: (proof: string, resolution: boolean) => Promise<void>;
 } 

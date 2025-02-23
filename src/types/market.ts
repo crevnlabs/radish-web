@@ -86,4 +86,16 @@ export interface RecentTradesProps {
 export interface ResolutionDialogProps {
   isLoading: boolean;
   onResolve: (proof: string, resolution: boolean) => Promise<void>;
+}
+
+export interface Prediction {
+  marketId: string;
+  marketTitle: string;
+  prediction: number;
+  timestamp: string;
+  endDate: string;
+  currentProbability: number;
+  resolved: boolean;
+  contractAddress?: string;
+  position?: number;
 } 

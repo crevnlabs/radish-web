@@ -1,8 +1,6 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
-import { Button } from "@/components/ui/button";
 import { CustomConnectButton } from "@/components/ui/CustomConnectButton";
 import { useAccount, useChainId } from "wagmi";
 import { readContract } from "@wagmi/core";

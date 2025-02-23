@@ -6,6 +6,8 @@ export const SUBGRAPH_URL: {
 } = {
   [LENS_TESTNET_CHAIN_ID]:
     "https://api.studio.thegraph.com/query/73364/radish-lens/version/latest",
+  [AVALANCHE_TESTNET_CHAIN_ID]:
+    "https://api.studio.thegraph.com/query/73364/radish-fuji/v0.0.1",
 };
 
 export const CONTRACT_ADDRESSES: {
@@ -18,10 +20,10 @@ export const CONTRACT_ADDRESSES: {
     yesToken: "0xB7a6D76A6448B35aCfC8aDbe5E9D7FDBB3c1ebC2",
   },
   [AVALANCHE_TESTNET_CHAIN_ID]: {
-    radishCore: "0xC139c07614ba4f82A41dECC3BeffdBfA2ad229dB",
-    mockERC20: "0x88b2DFA23505360b054baE96774b4e7C2D83ca08",
-    noToken: "0x939a843E55da283eD4209cF9a4122F37Aff4E6cb",
-    yesToken: "0xB7a6D76A6448B35aCfC8aDbe5E9D7FDBB3c1ebC2",
+    radishCore: "0x3B927596f629f4307B4712635c29a4Fa7788B554",
+    mockERC20: "0x6Fc773968759345799b910E8E3134068625eE912",
+    noToken: "0x53b30DbC983D2C5FDff400B2B77fB288136d19B4",
+    yesToken: "0xb60Ec2363CfefA78Fa7C7A269859d2B3D8c8C9F7",
   },
 };
 

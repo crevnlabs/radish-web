@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { useAccount } from "wagmi";
 import { useSwitchChain } from "wagmi";
 import { toast } from "sonner";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -18,12 +18,26 @@ import { chainLogos } from "@/lib/chainLogos";
 const SwitchNetwork = () => {
   const { chain } = useAccount();
   const { chains, error: switchNetworkError, switchChain } = useSwitchChain();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   useEffect(() => {
     if (switchNetworkError) {
       toast.error(switchNetworkError.message);
     }
   }, [switchNetworkError]);
+
+  if (!mounted) {
+    return (
+      <Button variant="link" className="text-sm flex items-center gap-2">
+        <span className="hidden md:inline">Select Network</span>
+        <ChevronDown className="h-4 w-4 md:ml-2" />
+      </Button>
+    );
+  }
 
   return (
     <DropdownMenu>

@@ -49,7 +49,7 @@ export default function CreateMarketPage() {
 
     return (
         <Layout>
-            <Card className="border-none bg-black text-white mx-auto mt-5">
+            <Card className="border-none bg-black text-white mx-auto mt-5 m-10">
                 <form onSubmit={handleSubmit} className="space-y-8 p-6">
                     <div>
                         <h1 className="text-white text-3xl font-bold">📝 Create New Prediction Market</h1>

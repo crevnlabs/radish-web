@@ -2,43 +2,19 @@
 
 import { WagmiProvider, http } from "wagmi";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { ConnectKitProvider } from "connectkit";
 import {
   RainbowKitProvider,
   getDefaultConfig,
-  darkTheme,
+  lightTheme,
 } from "@rainbow-me/rainbowkit";
 import "@rainbow-me/rainbowkit/styles.css";
 import { avalancheFuji } from "viem/chains";
+import { ThemeProvider as NextThemesProvider } from "next-themes"
 
-const lensTestnet = {
-  id: 37111,
-  name: "Lens Network Sepolia Testnet",
-  network: "lens-testnet",
-  nativeCurrency: {
-    decimals: 18,
-    name: "GRASS",
-    symbol: "GRASS",
-  },
-  rpcUrls: {
-    default: {
-      http: ["https://rpc.testnet.lens.dev"],
-    },
-    public: {
-      http: ["https://rpc.testnet.lens.dev"],
-    },
-  },
-  blockExplorers: {
-    default: {
-      name: "Block Explorer",
-      url: "https://block-explorer.testnet.lens.dev",
-    },
-  },
-} as const;
 
 export const config = getDefaultConfig({
   appName: "Radish",
-  projectId: "066465a4f5d400c9eccad76612f98c5a", // Get one at https://cloud.walletconnect.com
+  projectId: "066465a4f5d400c9eccad76612f98c5a", // Get one at https://cloud.walletconnect.com/app
   chains: [avalancheFuji],
   transports: {
     [avalancheFuji.id]: http(),
@@ -52,16 +28,16 @@ export function Providers({ children }: { children: React.ReactNode }) {
     <WagmiProvider config={config}>
       <QueryClientProvider client={queryClient}>
         <RainbowKitProvider
-          theme={darkTheme({
-            accentColor: "#111111",
-            accentColorForeground: "white",
+          theme={lightTheme({
+            accentColor: "#7CFC00", // Light green accent color
+            accentColorForeground: "black",
             borderRadius: "medium",
             fontStack: "system",
             overlayBlur: "small",
           })}
           initialChain={avalancheFuji}
         >
-          <ConnectKitProvider>{children}</ConnectKitProvider>
+          {children}
         </RainbowKitProvider>
       </QueryClientProvider>
     </WagmiProvider>

@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
 import { writeContract } from "@wagmi/core";
 import { config } from "@/app/providers";
-import { PREDICTION_MARKET_ABI } from "@/config/contracts";
+import { chainConfig } from "@/config/contracts";
 import { getUserMarkets } from "@/hooks/getUserMarket";
+import PREDICTION_MARKET_ABI from "@/config/abis/PredictionMarket";
 // import { mockPredictions } from "@/constants/mockData";
 import type { Prediction } from "@/types/market";
 

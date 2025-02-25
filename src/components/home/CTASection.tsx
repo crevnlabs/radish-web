@@ -33,7 +33,7 @@ export const CTASection = () => {
       whileInView="show"
       viewport={{ once: true }}
       variants={container}
-      className="py-20 text-center relative overflow-hidden"
+      className="py-20 bg-gray-900 relative overflow-hidden"
     >
       <motion.div
         className="absolute inset-0 bg-gradient-to-r from-neo-green/5 to-blue-500/5"
@@ -45,23 +45,26 @@ export const CTASection = () => {
           repeat: Infinity,
         }}
       />
-      <motion.div variants={container} className="space-y-8 relative">
-        <motion.h2
-          variants={item}
-          className="text-4xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-neo-green to-blue-500"
-        >
-          Ready to Join the Future of Creator Markets?
-        </motion.h2>
-        <motion.p variants={item} className="text-xl text-zinc-600 max-w-2xl mx-auto">
-          Start trading on creator milestones and be part of the next
-          evolution in social-fi
-        </motion.p>
-        <motion.div variants={item} className="flex gap-4 justify-center">
+      <div className="container mx-auto px-4">
+        <motion.div variants={container} className="flex justify-between items-center max-w-6xl mx-auto">
+          <div className="flex flex-col items-start justify-center">
+            <motion.h2
+              variants={item}
+              className="text-4xl text-start md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-neo-green to-blue-500 mb-10"
+            >
+              Ready to Join the Future of Creator Markets?
+            </motion.h2>
+            <motion.p className="text-xl text-zinc-300 font-medium">
+              Start trading on creator milestones and be part of the next
+              evolution in social-fi
+            </motion.p>
+          </div>
+
           <Link href="/markets">
             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
               <Button
                 size="lg"
-                className="text-lg px-8 bg-neo-green text-black hover:bg-neo-green/90 relative overflow-hidden group"
+                className="text-lg px-8 py-6 bg-neo-green text-black hover:bg-neo-green/90 relative overflow-hidden group whitespace-nowrap"
               >
                 <motion.span
                   className="absolute inset-0 bg-white/30"
@@ -74,7 +77,7 @@ export const CTASection = () => {
             </motion.div>
           </Link>
         </motion.div>
-      </motion.div>
+      </div>
     </motion.section>
   );
 }; 

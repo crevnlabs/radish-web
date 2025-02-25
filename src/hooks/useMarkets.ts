@@ -1,11 +1,9 @@
 import { useAccount, useWriteContract, useReadContract } from "wagmi";
-import {
-  CONTRACT_ADDRESSES,
-  RADISH_CORE_ABI,
-  PREDICTION_MARKET_ABI,
-  ERC20_ABI,
-  SUBGRAPH_URL,
-} from "@/config/contracts";
+import { chainConfig } from "@/config/contracts";
+import ERC20_ABI from "@/config/abis/ERC20";
+import PREDICTION_MARKET_ABI from "@/config/abis/PredictionMarket";
+import TOKENSABI from "@/config/abis/Tokens";
+import RADISH_CORE_ABI from "@/config/abis/RadishCore";
 import { readContract } from "@wagmi/core";
 import { request } from "graphql-request";
 import { useEffect, useState } from "react";
@@ -33,55 +31,55 @@ export interface Market {
 
 // Mock data for demo purposes
 export const mockMarkets: Market[] = [
-  {
-    id: "mock-1",
-    title: "Will MrBeast reach 200M YouTube subscribers by March 2024?",
-    description:
-      "Prediction market for MrBeast's YouTube channel reaching 200M subscribers",
-    endDate: "2024-03-31",
-    creatorHandle: "@mrbeast",
-    platform: "youtube",
-    metric: "subscribers",
-    target: 200000000,
-    currentMetric: 187000000,
-    yesPrice: 0.65,
-    noPrice: 0.35,
-    liquidity: 250000,
-    volume24h: 45000,
-    isOnChain: false,
-  },
-  {
-    id: "mock-2",
-    title: "Will Elon Musk reach 170M Twitter followers by Q2 2024?",
-    description: "Market predicting Elon Musk's Twitter follower growth",
-    endDate: "2024-06-30",
-    creatorHandle: "@elonmusk",
-    platform: "twitter",
-    metric: "followers",
-    target: 170000000,
-    currentMetric: 165000000,
-    yesPrice: 0.72,
-    noPrice: 0.28,
-    liquidity: 180000,
-    volume24h: 32000,
-    isOnChain: false,
-  },
-  {
-    id: "mock-3",
-    title: "Will Khaby Lame hit 200M TikTok followers by May 2024?",
-    description: "Prediction market for Khaby Lame's TikTok follower growth",
-    endDate: "2024-05-31",
-    creatorHandle: "@khabylame",
-    platform: "tiktok",
-    metric: "followers",
-    target: 200000000,
-    currentMetric: 162000000,
-    yesPrice: 0.45,
-    noPrice: 0.55,
-    liquidity: 120000,
-    volume24h: 28000,
-    isOnChain: false,
-  },
+  // {
+  //   id: "mock-1",
+  //   title: "Will MrBeast reach 200M YouTube subscribers by March 2024?",
+  //   description:
+  //     "Prediction market for MrBeast's YouTube channel reaching 200M subscribers",
+  //   endDate: "2024-03-31",
+  //   creatorHandle: "@mrbeast",
+  //   platform: "youtube",
+  //   metric: "subscribers",
+  //   target: 200000000,
+  //   currentMetric: 187000000,
+  //   yesPrice: 0.65,
+  //   noPrice: 0.35,
+  //   liquidity: 250000,
+  //   volume24h: 45000,
+  //   isOnChain: false,
+  // },
+  // {
+  //   id: "mock-2",
+  //   title: "Will Elon Musk reach 170M Twitter followers by Q2 2024?",
+  //   description: "Market predicting Elon Musk's Twitter follower growth",
+  //   endDate: "2024-06-30",
+  //   creatorHandle: "@elonmusk",
+  //   platform: "twitter",
+  //   metric: "followers",
+  //   target: 170000000,
+  //   currentMetric: 165000000,
+  //   yesPrice: 0.72,
+  //   noPrice: 0.28,
+  //   liquidity: 180000,
+  //   volume24h: 32000,
+  //   isOnChain: false,
+  // },
+  // {
+  //   id: "mock-3",
+  //   title: "Will Khaby Lame hit 200M TikTok followers by May 2024?",
+  //   description: "Prediction market for Khaby Lame's TikTok follower growth",
+  //   endDate: "2024-05-31",
+  //   creatorHandle: "@khabylame",
+  //   platform: "tiktok",
+  //   metric: "followers",
+  //   target: 200000000,
+  //   currentMetric: 162000000,
+  //   yesPrice: 0.45,
+  //   noPrice: 0.55,
+  //   liquidity: 120000,
+  //   volume24h: 28000,
+  //   isOnChain: false,
+  // },
 ];
 
 export function useMarkets() {
@@ -92,7 +90,7 @@ export function useMarkets() {
   const chainId = useChainId();
 
   const { data: marketCount } = useReadContract({
-    address: CONTRACT_ADDRESSES[chainId].radishCore,
+    address: chainConfig[chainId].contracts.radishCore,
     abi: RADISH_CORE_ABI,
     functionName: "marketCount",
     chainId: chainId,
@@ -120,9 +118,12 @@ export function useMarkets() {
           }
         }`;
 
-        const data: any = await request(SUBGRAPH_URL[chainId], query);
+        const data: any = await request(
+          chainConfig[chainId].contracts.subgraphUrl,
+          query
+        );
         console.log(chainId);
-        console.log(SUBGRAPH_URL[chainId]);
+        console.log(chainConfig[chainId].contracts.subgraphUrl);
         console.log("data", data);
 
         const marketsFromGraph = await Promise.all(
@@ -203,7 +204,7 @@ export function useCreateMarket() {
     const endTimestamp = Math.floor(new Date(endDate).getTime() / 1000);
     await writeContractAsync({
       abi: RADISH_CORE_ABI,
-      address: CONTRACT_ADDRESSES[chainId].radishCore,
+      address: chainConfig[chainId].contracts.radishCore,
       functionName: "createMarket",
       chainId: chainId,
       args: [question, BigInt(endTimestamp)],
@@ -246,7 +247,10 @@ export function useMarket(marketId: string) {
           }
         }`;
 
-        const data: any = await request(SUBGRAPH_URL[chainId], query);
+        const data: any = await request(
+          chainConfig[chainId].contracts.subgraphUrl,
+          query
+        );
 
         console.log("data", data);
         const marketsFromGraph = await Promise.all(
@@ -403,7 +407,7 @@ export function useMarketActions(marketId: string) {
 
     approve: async (address: `0x${string}`) => {
       await approve({
-        address: CONTRACT_ADDRESSES[chainId].mockERC20,
+        address: chainConfig[chainId].contracts.mockERC20,
         abi: ERC20_ABI,
         functionName: "approve",
         chainId: chainId as any,

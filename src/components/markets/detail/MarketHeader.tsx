@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { CustomConnectButton } from "@/components/ui/CustomConnectButton";
 import { MarketHeaderProps } from '@/types/market';
 
-export const MarketHeader = memo(({
+const MarketHeaderComponent = ({
   title,
   creatorHandle,
   target,
@@ -43,4 +43,8 @@ export const MarketHeader = memo(({
       </div>
     </div>
   </div>
-));
+);
+
+MarketHeaderComponent.displayName = 'MarketHeader';
+
+export const MarketHeader = memo(MarketHeaderComponent);

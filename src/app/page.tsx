@@ -12,15 +12,15 @@ export default function Home() {
     <Layout>
       <HeroSection />
       <VisionSection />
-      <FeaturesSection 
-        title="Why Trade on Radish?" 
-        features={features} 
+      <FeaturesSection
+        title="Why Trade on Radish?"
+        features={features}
         className="bg-black text-white"
       />
-      <FeaturesSection 
-        title="Coming Soon" 
-        features={futureFeatures} 
-        className="bg-zinc-50"
+      <FeaturesSection
+        title="Coming Soon"
+        features={futureFeatures}
+        className="bg-zinc-900"
       />
       <CTASection />
     </Layout>

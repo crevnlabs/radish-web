@@ -1,4 +1,4 @@
-import { ConnectKitButton } from "connectkit";
+import { ConnectButton } from "@rainbow-me/rainbowkit";
 import { Button } from "@/components/ui/button";
 import Image from 'next/image';
 
@@ -8,33 +8,37 @@ export const CustomConnectButton = ({
     dark?: boolean
 }) => {
     return (
-        <ConnectKitButton.Custom>
+        <ConnectButton.Custom>
             {({
-                isConnected, isConnecting, show, hide, address, ensName, chain, truncatedAddress
+                account,
+                chain,
+                openAccountModal,
+                openChainModal,
+                openConnectModal,
+                authenticationStatus,
+                mounted,
             }) => {
-                const ready = !isConnecting;
+                // Return null if the wagmi is not mounted yet
+                if (!mounted || authenticationStatus === 'loading') {
+                    return null;
+                }
+
                 const connected =
-                    ready &&
-                    address &&
-                    chain &&
-                    isConnected;
+                    mounted &&
+                    account &&
+                    chain;
 
                 return (
-                    <div
-                        {...(!ready && {
-                            'aria-hidden': true,
-                            'style': {
-                                opacity: 0,
-                                pointerEvents: 'none',
-                                userSelect: 'none',
-                            },
-                        })}
-                    >
+                    <div style={!mounted ? {
+                        opacity: 0,
+                        pointerEvents: 'none',
+                        userSelect: 'none',
+                    } : undefined}>
                         {(() => {
                             if (!connected) {
                                 return (
                                     <Button
-                                        onClick={show}
+                                        onClick={openConnectModal}
                                         variant="outline"
                                         className={!dark ?
                                             `font-medium border-neo-green text-neo-green hover:bg-neo-green hover:text-black` :
@@ -49,7 +53,7 @@ export const CustomConnectButton = ({
                             if (chain.unsupported) {
                                 return (
                                     <Button
-                                        onClick={show}
+                                        onClick={openChainModal}
                                         variant="destructive"
                                         className="font-medium"
                                     >
@@ -60,10 +64,8 @@ export const CustomConnectButton = ({
 
                             return (
                                 <div className="flex items-center gap-2">
-                                
-
                                     <Button
-                                        onClick={show}
+                                        onClick={openAccountModal}
                                         variant="outline"
                                         size="sm"
                                         className={!dark ?
@@ -71,7 +73,7 @@ export const CustomConnectButton = ({
                                             `font-medium text-black border-t border-black`
                                         }
                                     >
-                                        {ensName || truncatedAddress}
+                                        {account.displayName}
                                     </Button>
                                 </div>
                             );
@@ -79,6 +81,6 @@ export const CustomConnectButton = ({
                     </div>
                 );
             }}
-        </ConnectKitButton.Custom>
+        </ConnectButton.Custom>
     );
 };

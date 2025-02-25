@@ -10,7 +10,9 @@ import { useChainId } from "wagmi";
 import { parseEther } from "viem";
 import { readContract } from "@wagmi/core";
 import { config } from "@/app/providers";
-import { CONTRACT_ADDRESSES, ERC20_ABI, PREDICTION_MARKET_ABI } from "@/config/contracts";
+import { chainConfig } from "@/config/contracts";
+import ERC20_ABI from "@/config/abis/ERC20";
+import PREDICTION_MARKET_ABI from "@/config/abis/PredictionMarket"
 import { MarketHeader } from "@/components/markets/detail/MarketHeader";
 import { MarketChart } from "@/components/markets/detail/MarketChart";
 import { TradingInterface } from "@/components/markets/detail/TradingInterface";
@@ -102,7 +104,7 @@ export default function MarketPage() {
     if (!address) return;
     try {
       await mint({
-        address: CONTRACT_ADDRESSES[chainId].mockERC20,
+        address: chainConfig[chainId].contracts.mockERC20,
         abi: ERC20_ABI,
         functionName: "mint",
         chainId: chainId as any,

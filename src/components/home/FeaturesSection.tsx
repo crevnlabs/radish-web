@@ -38,14 +38,14 @@ const item = {
 
 export const FeaturesSection = ({ title, features, className = "" }: FeaturesSectionProps) => {
   const isLightBg = className.includes('bg-zinc-50');
-  
+
   return (
     <motion.section
       initial="hidden"
       whileInView="show"
       viewport={{ once: true }}
       variants={staggerContainer}
-      className={`py-20 rounded-3xl relative overflow-hidden ${className}`}
+      className={`py-20 relative overflow-hidden ${className}`}
     >
       <motion.div
         className="absolute inset-0 bg-[url('/grid.svg')] opacity-10"
@@ -74,9 +74,8 @@ export const FeaturesSection = ({ title, features, className = "" }: FeaturesSec
                 scale: 1.05,
                 transition: { duration: 0.2 },
               }}
-              className={`p-8 rounded-2xl bg-gradient-to-br ${feature.bgColor} backdrop-blur-sm border ${
-                isLightBg ? 'border-zinc-200/50 hover:border-zinc-300/50' : 'border-white/10 hover:border-white/20'
-              } transition-all cursor-pointer relative group`}
+              className={`p-8 rounded-2xl bg-gradient-to-br ${feature.bgColor} backdrop-blur-sm border ${isLightBg ? 'border-zinc-200/50 hover:border-zinc-300/50' : 'border-white/10 hover:border-white/20'
+                } transition-all cursor-pointer relative group`}
             >
               <motion.div
                 initial={{ scale: 1 }}
@@ -92,9 +91,8 @@ export const FeaturesSection = ({ title, features, className = "" }: FeaturesSec
                 {feature.description}
               </p>
               <motion.div
-                className={`absolute inset-0 bg-gradient-to-r ${
-                  isLightBg ? 'from-white/0 via-black/5 to-white/0' : 'from-white/0 via-white/10 to-white/0'
-                } opacity-0 group-hover:opacity-100`}
+                className={`absolute inset-0 bg-gradient-to-r ${isLightBg ? 'from-white/0 via-black/5 to-white/0' : 'from-white/0 via-white/10 to-white/0'
+                  } opacity-0 group-hover:opacity-100`}
                 animate={{
                   x: ["-200%", "200%"],
                 }}

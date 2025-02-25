@@ -38,16 +38,18 @@ const MarketsPage = () => {
 
   return (
     <Layout>
-      <Header />
-      <Masonry
-        breakpointCols={MASONRY_BREAKPOINTS}
-        className="my-masonry-grid"
-        columnClassName="my-masonry-grid_column p-wall-tilt"
-      >
-        {markets.map((market) => (
-          <MarketCard key={market.id} market={market} />
-        ))}
-      </Masonry>
+      <main className="m-10">
+        <Header />
+        <Masonry
+          breakpointCols={MASONRY_BREAKPOINTS}
+          className="my-masonry-grid"
+          columnClassName="my-masonry-grid_column p-wall-tilt"
+        >
+          {markets.map((market) => (
+            <MarketCard key={market.id} market={market} />
+          ))}
+        </Masonry>
+      </main>
     </Layout>
   );
 };

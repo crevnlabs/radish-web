@@ -25,11 +25,11 @@ export const WebsiteStructuredData: React.FC = () => (
         type="WebSite"
         data={{
             name: 'Radish',
-            url: 'https://radish.bet',
+            url: 'https://radish-markets.vercel.app',
             description: 'Decentralized prediction markets for creator growth metrics across major platforms',
             potentialAction: {
                 '@type': 'SearchAction',
-                target: 'https://radish.bet/search?q={search_term_string}',
+                target: 'https://radish-markets.vercel.app/search?q={search_term_string}',
                 'query-input': 'required name=search_term_string',
             },
         }}
@@ -41,8 +41,8 @@ export const OrganizationStructuredData: React.FC = () => (
         type="Organization"
         data={{
             name: 'Radish',
-            url: 'https://radish.bet',
-            logo: 'https://radish.bet/logo.gif',
+            url: 'https://radish-markets.vercel.app',
+            logo: 'https://radish-markets.vercel.app/logo.png',
             sameAs: [
                 'https://twitter.com/radish_bet',
                 // Add other social profiles here

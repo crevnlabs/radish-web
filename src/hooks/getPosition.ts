@@ -1,5 +1,5 @@
 import { request, gql } from "graphql-request";
-import { SUBGRAPH_URL } from "@/config/contracts";
+import { chainConfig } from "@/config/contracts";
 
 export const getPosition = async (
   user: string,
@@ -24,7 +24,10 @@ export const getPosition = async (
         }
       }
     `;
-    const data: any = await request(SUBGRAPH_URL[chainId], query);
+    const data: any = await request(
+      chainConfig[chainId].contracts.subgraphUrl,
+      query
+    );
     console.log(data.userMarkets);
     return data.userMarkets;
   } catch (error) {

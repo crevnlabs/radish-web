@@ -10,4 +10,6 @@ export const MarketStats = memo(({ volume, liquidity }: MarketStatsProps) => (
       <span className="font-medium">Liquidity:</span> ${liquidity}
     </div>
   </div>
-)); 
+));
+
+MarketStats.displayName = 'MarketStats'; 

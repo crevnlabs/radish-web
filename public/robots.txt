@@ -3,4 +3,4 @@ User-agent: *
 Allow: /
 
 # Sitemap location
-Sitemap: https://radish.bet/sitemap.xml 
+Sitemap: https://radish-markets.vercel.app/sitemap.xml 

@@ -11,4 +11,6 @@ export const PLATFORM_ICONS: Record<string, string> = {
 
 export const PlatformIcon = memo(({ platform }: PlatformIconProps) => (
   <span className="mr-2">{PLATFORM_ICONS[platform || "onchain"]}</span>
-)); 
+));
+
+PlatformIcon.displayName = 'PlatformIcon'; 

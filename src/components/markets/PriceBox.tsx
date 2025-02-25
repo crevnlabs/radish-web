@@ -8,4 +8,6 @@ export const PriceBox = memo(({ type, price, className, textColor }: PriceBoxPro
       ${price.toFixed(3)}
     </div>
   </div>
-)); 
+));
+
+PriceBox.displayName = 'PriceBox'; 

@@ -34,4 +34,6 @@ export const RecentTrades = memo(({ trades }: RecentTradesProps) => (
       ))}
     </div>
   </div>
-)); 
+));
+
+RecentTrades.displayName = 'RecentTrades'; 

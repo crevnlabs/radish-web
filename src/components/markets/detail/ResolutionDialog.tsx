@@ -92,4 +92,6 @@ export const ResolutionDialog = memo(({ isLoading, onResolve }: ResolutionDialog
       </DialogContent>
     </Dialog>
   );
-}); 
+});
+
+ResolutionDialog.displayName = 'ResolutionDialog'; 

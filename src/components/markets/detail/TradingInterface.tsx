@@ -53,7 +53,7 @@ export const TradingInterface = memo(({
             className="bg-zinc-900 border-zinc-700 text-white placeholder:text-zinc-500"
           />
         </div>
-        
+
         {/* Cost Information */}
         <div className="text-sm space-y-2">
           <div className="flex justify-between text-zinc-300">
@@ -79,7 +79,7 @@ export const TradingInterface = memo(({
             ? "Processing..."
             : `Approve Contract to Trade ${activeTab.toUpperCase()} Shares`}
         </Button>
-        
+
         <div className="grid grid-cols-2 gap-4">
           <Button
             onClick={() => onTrade("buy")}
@@ -107,4 +107,6 @@ export const TradingInterface = memo(({
       </div>
     </Tabs>
   </div>
-)); 
+));
+
+TradingInterface.displayName = 'TradingInterface'; 

@@ -35,28 +35,28 @@ export const MarketCard = memo(({ market }: { market: Market }) => {
         )}
 
         <div className="grid grid-cols-2 gap-4 mb-4 w-full">
-          <PriceBox 
-            type="YES" 
-            price={market.yesPrice} 
-            className="bg-green-500/20" 
-            textColor="text-green-700" 
+          <PriceBox
+            type="YES"
+            price={market.yesPrice}
+            className="bg-green-500/20"
+            textColor="text-green-700"
           />
-          <PriceBox 
-            type="NO" 
-            price={market.noPrice} 
-            className="bg-red-500/20" 
-            textColor="text-red-700" 
+          <PriceBox
+            type="NO"
+            price={market.noPrice}
+            className="bg-red-500/20"
+            textColor="text-red-700"
           />
         </div>
 
-        <MarketDetails 
-          market={market} 
-          formattedMetrics={formattedMetrics} 
+        <MarketDetails
+          market={market}
+          formattedMetrics={formattedMetrics}
         />
 
-        <MarketStats 
-          volume={formattedMetrics.volume} 
-          liquidity={formattedMetrics.liquidity} 
+        <MarketStats
+          volume={formattedMetrics.volume}
+          liquidity={formattedMetrics.liquidity}
         />
 
         {market.isOnChain && (
@@ -67,4 +67,6 @@ export const MarketCard = memo(({ market }: { market: Market }) => {
       </motion.div>
     </Link>
   );
-}); 
+});
+
+MarketCard.displayName = 'MarketCard'; 

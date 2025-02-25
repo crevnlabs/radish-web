@@ -15,7 +15,7 @@ interface MarketChartProps {
 
 export const MarketChart = memo(({ marketId, trades, activeTab }: MarketChartProps) => {
   const filteredTrades = trades.filter((t) => t.outcome === activeTab);
-  
+
   return (
     <div className="col-span-2 p-shadow p-6 rounded bg-black text-white">
       <div className="h-[400px]">
@@ -26,4 +26,6 @@ export const MarketChart = memo(({ marketId, trades, activeTab }: MarketChartPro
       </div>
     </div>
   );
-}); 
+});
+
+MarketChart.displayName = 'MarketChart'; 

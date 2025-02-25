@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Trade } from "@/types/market";
 import { request } from "graphql-request";
-import { SUBGRAPH_URL } from "@/config/contracts";
+import { chainConfig } from "@/config/contracts";
 import { mockTrades } from "@/constants/mockData";
 
 export function useTrades(marketId: string, chainId: number) {
@@ -12,7 +12,7 @@ export function useTrades(marketId: string, chainId: number) {
   const fetchTrades = async () => {
     try {
       const data: any = await request(
-        SUBGRAPH_URL[chainId],
+        chainConfig[chainId].contracts.subgraphUrl,
         `
         query MyQuery {
           orders(where: { market: "${marketId}" }) {
@@ -52,4 +52,4 @@ export function useTrades(marketId: string, chainId: number) {
   }, [marketId, chainId]);
 
   return { trades, isLoading, error, refetchTrades: fetchTrades };
-} 
+}

@@ -15,11 +15,11 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Radish - Bet on your favorite creators and earn rewards",
     description: "Decentralized prediction markets for creator growth metrics across major platforms. Place bets and earn rewards.",
-    url: "https://radish.bet",
+    url: "https://radish-markets.vercel.app",
     siteName: "Radish",
     images: [
       {
-        url: "/logo.gif",
+        url: "/logo.png",
         width: 800,
         height: 600,
         alt: "Radish Logo",
@@ -32,15 +32,15 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Radish - Bet on your favorite creators and earn rewards",
     description: "Decentralized prediction markets for creator growth metrics across major platforms. Place bets and earn rewards.",
-    images: ["/logo.gif"],
+    images: ["/logo.png"],
     creator: "@radish_bet",
   },
   icons: {
     icon: [
-      { url: "/logo.gif" },
+      { url: "/logo.png" },
       { url: "/favicon.ico" },
     ],
-    apple: "/logo.gif",
+    apple: "/logo.png",
   },
   manifest: "/manifest.json",
   robots: {

@@ -8,15 +8,15 @@ export default function Document() {
                 <meta charSet="utf-8" />
 
                 {/* Favicon */}
-                <link rel="icon" href="/logo.gif" />
-                <link rel="apple-touch-icon" href="/logo.gif" />
+                <link rel="icon" href="/logo.png" />
+                <link rel="apple-touch-icon" href="/logo.png" />
 
                 {/* Preconnect to domains for performance */}
                 <link rel="preconnect" href="https://fonts.googleapis.com" />
                 <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
 
                 {/* Canonical URL */}
-                <link rel="canonical" href="https://radish.bet" />
+                <link rel="canonical" href="https://radish-markets.vercel.app" />
 
                 {/* Additional SEO meta tags */}
                 <meta name="application-name" content="Radish" />
@@ -36,11 +36,11 @@ export default function Document() {
                             '@context': 'https://schema.org',
                             '@type': 'WebSite',
                             name: 'Radish',
-                            url: 'https://radish.bet',
+                            url: 'https://radish-markets.vercel.app',
                             description: 'Decentralized prediction markets for creator growth metrics across major platforms',
                             potentialAction: {
                                 '@type': 'SearchAction',
-                                target: 'https://radish.bet/search?q={search_term_string}',
+                                target: 'https://radish-markets.vercel.app/search?q={search_term_string}',
                                 'query-input': 'required name=search_term_string'
                             }
                         })

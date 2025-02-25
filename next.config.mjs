@@ -4,7 +4,7 @@ const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
   images: {
-    domains: ["radish.bet"], // Add your domain for optimized images
+    domains: ["radish-markets.vercel.app"], // Add your domain for optimized images
     formats: ["image/avif", "image/webp"],
   },
   async headers() {

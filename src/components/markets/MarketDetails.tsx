@@ -23,4 +23,6 @@ export const MarketDetails = memo(({ market, formattedMetrics }: MarketDetailsPr
       <span className="font-medium">End Date:</span> {market.endDate}
     </div>
   </div>
-)); 
+));
+
+MarketDetails.displayName = 'MarketDetails'; 

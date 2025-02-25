@@ -22,14 +22,15 @@ import { LoadingSpinner } from "@/components/ui/LoadingSpinner";
 import { CustomConnectButton } from "@/components/ui/CustomConnectButton";
 
 export default function MarketPage() {
-  const { id } = useParams();
+  const params = useParams();
+  const id = params?.id as string;
   const chainId = useChainId();
   const { address } = useAccount();
 
   // Market data and actions
-  const { market, isLoading: marketLoading, error: marketError } = useMarket(id as string);
-  const { buy, sell, approve, resolve, isLoading: actionLoading, error: actionError } = useMarketActions(id as string);
-  const { trades, refetchTrades } = useTrades(id as string, chainId);
+  const { market, isLoading: marketLoading, error: marketError } = useMarket(id);
+  const { buy, sell, approve, resolve, isLoading: actionLoading, error: actionError } = useMarketActions(id);
+  const { trades, refetchTrades } = useTrades(id, chainId);
 
   // Local state
   const [activeTab, setActiveTab] = useState("yes");

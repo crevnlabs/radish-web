@@ -30,7 +30,7 @@ export const VisionSection = () => {
     >
       {/* Background gradient with pulsing opacity */}
       <motion.div
-        className="absolute inset-0 bg-gradient-to-r from-neo-green/5 to-blue-500/5"
+        className="absolute inset-0 bg-gradient-to-r from-neo-green/5 to-red-300/5"
         animate={{ opacity: [0.3, 0.5, 0.3] }}
         transition={{ duration: 4, repeat: Infinity }}
       />
@@ -44,14 +44,16 @@ export const VisionSection = () => {
       >
         <motion.p
           variants={childVariants}
-          className="text-3xl w-4xl font-black text-zinc-800 leading-relaxed mb-4"
+          className="text-3xl w-4xl font-black text-black leading-relaxed mb-4"
         >
-          Creator rivalry has always entertained the masses —{" "}
-          <span className="font-bold">PewDiePie vs T-Series, KSI vs Logan Paul</span>. With RADISH, all this hype and fandom can be monetized through prediction markets that resolve followers, subscribers, and viewer counts.
+          <span className="text-4xl">
+            Creator rivalry has always entertained the masses —{" "}
+          </span>
+          <span className="font-bold text-3xl">PewDiePie vs T-Series, KSI vs Logan Paul</span>. With RADISH, all this hype and fandom can be monetized through prediction markets that resolve followers, subscribers, and viewer counts.
         </motion.p>
         <motion.p
           variants={childVariants}
-          className="text-lg md:text-2xl text-zinc-800 leading-relaxed"
+          className="text-2xl text-zinc-900 leading-relaxed"
         >
           We&apos;re transforming the creator-fan relationship by{" "}
           gamifying engagement and enabling fans to monetize their passion.

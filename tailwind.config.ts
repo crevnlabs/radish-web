@@ -38,12 +38,12 @@ const config = {
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         neo: {
-          green: "#00E599",
+          green: "#e84142",
           navy: "#0D1321",
           "light-gray": "#F7F7F7",
         },
         primary: {
-          DEFAULT: "#00E599",
+          DEFAULT: "#e84142",
           foreground: "#FFFFFF",
         },
         secondary: {
@@ -59,7 +59,7 @@ const config = {
           foreground: "#0D1321",
         },
         accent: {
-          DEFAULT: "#00E599",
+          DEFAULT: "#e84142",
           foreground: "#FFFFFF",
         },
         popover: {

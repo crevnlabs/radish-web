@@ -86,7 +86,7 @@ export default function Layout({
 
             <footer className="bg-black text-white">
                 <div className="container mx-auto py-8">
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8 ml-20">
                         <div>
                             <h3 className="font-bold text-3xl mb-2">RADISH</h3>
                             <p className="text-gray-400">

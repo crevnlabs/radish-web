@@ -3,7 +3,7 @@ import { writeContract } from "@wagmi/core";
 import { config } from "@/app/providers";
 import { PREDICTION_MARKET_ABI } from "@/config/contracts";
 import { getUserMarkets } from "@/hooks/getUserMarket";
-import { mockPredictions } from "@/constants/mockData";
+// import { mockPredictions } from "@/constants/mockData";
 import type { Prediction } from "@/types/market";
 
 export function usePredictions(address: string | undefined, chainId: number) {
@@ -16,29 +16,39 @@ export function usePredictions(address: string | undefined, chainId: number) {
     setIsLoading(true);
 
     try {
+      console.log(address, chainId);
       const data = await getUserMarkets(address, chainId);
+      console.log(data);
       const parsedPredictions = data.marketsParticipated.map((market: any) => ({
         marketId: market.market.id,
         marketTitle: market.market.question,
-        prediction: parseFloat(market.yesInMarket) /
-          (parseFloat(market.market.totalYes) + parseFloat(market.market.totalNo)),
+        prediction:
+          parseFloat(market.yesInMarket) /
+          (parseFloat(market.market.totalYes) +
+            parseFloat(market.market.totalNo)),
         timestamp: new Date().toISOString(),
         endDate: market.market.endDate,
-        currentProbability: parseFloat(market.market.totalYes) /
-          (parseFloat(market.market.totalYes) + parseFloat(market.market.totalNo)),
+        currentProbability:
+          parseFloat(market.market.totalYes) /
+          (parseFloat(market.market.totalYes) +
+            parseFloat(market.market.totalNo)),
         resolved: market.market.resolved,
         contractAddress: market.market.marketContract,
         position: market.market.won
-          ? (market.yesInMarket * (market.market.totalYes + market.market.totalNo)) /
-            market.market.totalYes / 1e18
-          : (market.noInMarket * (market.market.totalYes + market.market.totalNo)) /
-            market.market.totalNo / 1e18,
+          ? (market.yesInMarket *
+              (market.market.totalYes + market.market.totalNo)) /
+            market.market.totalYes /
+            1e18
+          : (market.noInMarket *
+              (market.market.totalYes + market.market.totalNo)) /
+            market.market.totalNo /
+            1e18,
       }));
 
-      setPredictions([...mockPredictions, ...parsedPredictions]);
+      setPredictions([...parsedPredictions]);
     } catch (error) {
       console.error("Failed to fetch predictions:", error);
-      setPredictions(mockPredictions);
+      setPredictions([]);
     } finally {
       setIsLoading(false);
     }
@@ -69,4 +79,4 @@ export function usePredictions(address: string | undefined, chainId: number) {
     isClaiming,
     handleClaim,
   };
-} 
+}

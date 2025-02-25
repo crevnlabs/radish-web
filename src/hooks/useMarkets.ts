@@ -121,6 +121,9 @@ export function useMarkets() {
         }`;
 
         const data: any = await request(SUBGRAPH_URL[chainId], query);
+        console.log(chainId);
+        console.log(SUBGRAPH_URL[chainId]);
+        console.log("data", data);
 
         const marketsFromGraph = await Promise.all(
           data.markets.map(async (m: any) => {

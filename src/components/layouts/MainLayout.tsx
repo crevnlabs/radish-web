@@ -75,7 +75,7 @@ export default function Layout({
 
     return (
         <div className="min-h-screen bg-white">
-            <header className="bg-black text-white py-2 p-shadow relative">
+            <header className="bg-black text-white py-2 p-shadow relative z-50">
                 <div className="container mx-auto py-4">
                     <div className="flex justify-between items-center">
                         <div className="flex items-center gap-4">
@@ -134,7 +134,7 @@ export default function Layout({
 
                 {/* Dropdown Menu */}
                 <div
-                    className={`absolute top-full left-0 right-0 bg-zinc-900 border-t border-gray-800 transition-all duration-300 ${isMenuOpen ? "opacity-100 visible" : "opacity-0 invisible"
+                    className={`absolute z-40 top-full left-0 right-0 bg-zinc-900 border-t border-gray-800 transition-all duration-300 ${isMenuOpen ? "opacity-100 visible" : "opacity-0 invisible"
                         }`}
                 >
                     <div className="container mx-auto py-4">

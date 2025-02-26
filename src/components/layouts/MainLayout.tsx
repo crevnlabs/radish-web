@@ -53,23 +53,25 @@ export default function Layout({
                             <div className="bg-yellow-600 text-black text-xs font-semibold px-2 py-1 rounded-md ml-2">
                                 TESTNET
                             </div>
-                            <nav className="hidden md:flex items-center gap-6 ml-8">
-                                <Link href="/markets">
-                                    <span className="text-white hover:text-neo-green transition-colors">
-                                        Markets
-                                    </span>
-                                </Link>
-                                <Link href="/create">
-                                    <span className="text-white hover:text-neo-green transition-colors">
-                                        Create
-                                    </span>
-                                </Link>
-                                <Link href="/my-predictions">
-                                    <span className="text-white hover:text-neo-green transition-colors">
-                                        My Positions
-                                    </span>
-                                </Link>
-                            </nav>
+                            {address && (
+                                <nav className="hidden md:flex items-center gap-6 ml-8">
+                                    <Link href="/markets">
+                                        <span className="text-white hover:text-neo-green transition-colors">
+                                            Markets
+                                        </span>
+                                    </Link>
+                                    <Link href="/create">
+                                        <span className="text-white hover:text-neo-green transition-colors">
+                                            Create
+                                        </span>
+                                    </Link>
+                                    <Link href="/my-predictions">
+                                        <span className="text-white hover:text-neo-green transition-colors">
+                                            My Positions
+                                        </span>
+                                    </Link>
+                                </nav>
+                            )}
                         </div>
                         <div className="flex items-center gap-4">
                             <FaucetModal open={faucetOpen} onOpenChange={setFaucetOpen} />

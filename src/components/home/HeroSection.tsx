@@ -41,11 +41,7 @@ export const HeroSection = () => {
           variants={container}
           initial="hidden"
           animate="show"
-          className="space-y-8 backdrop-blur-sm bg-black/10 p-8 rounded-3xl border border-white/10 shadow-xl"
-          whileHover={{
-            boxShadow: "0 0 30px rgba(0, 255, 0, 0.2)",
-            borderColor: "rgba(255, 255, 255, 0.2)",
-          }}
+          className="space-y-8"
           transition={{ duration: 0.3 }}
         >
           <motion.div variants={item} className="relative inline-block">
@@ -90,7 +86,7 @@ export const HeroSection = () => {
             />
           </motion.div>
 
-          <motion.p variants={item} className="text-xl md:text-2xl text-white max-w-3xl mx-auto font-medium drop-shadow-sm leading-relaxed">
+          <motion.p variants={item} className="text-xl md:text-2xl text-zinc-300 max-w-3xl mx-auto font-medium drop-shadow-sm leading-relaxed">
             a prediction market where fans bet on their
             favorite content creators&apos; milestones and rivalries
           </motion.p>
@@ -114,7 +110,7 @@ export const HeroSection = () => {
         </motion.div>
 
         {/* Preview Card */}
-        <motion.div variants={item} className="w-full max-w-4xl mt-8">
+        <motion.div variants={item} className="w-full max-w-2xl mt-8">
           <motion.div
             className="relative w-full h-80 bg-zinc-800/70 rounded-2xl overflow-hidden backdrop-blur-sm border border-white/20 shadow-2xl"
             whileHover={{ scale: 1.02 }}

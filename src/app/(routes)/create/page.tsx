@@ -107,7 +107,7 @@ export default function CreateMarketPage() {
                     </Button>
 
                     {error && (
-                        <p className="text-red-500 text-sm mt-2">
+                        <p className="text-violet-500 text-sm mt-2">
                             Error: {error.message}
                         </p>
                     )}

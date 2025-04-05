@@ -13,7 +13,7 @@ import { ThemeProvider as NextThemesProvider } from "next-themes"
 
 
 export const config = getDefaultConfig({
-  appName: "Radish",
+  appName: "FanFate",
   projectId: "066465a4f5d400c9eccad76612f98c5a", // Get one at https://cloud.walletconnect.com/app
   chains: [avalancheFuji],
   transports: {
@@ -29,7 +29,7 @@ export function Providers({ children }: { children: React.ReactNode }) {
       <QueryClientProvider client={queryClient}>
         <RainbowKitProvider
           theme={lightTheme({
-            accentColor: "#7CFC00", // Light green accent color
+            accentColor: "#5eead4", // Changed to teal-300
             accentColorForeground: "black",
             borderRadius: "medium",
             fontStack: "system",

@@ -24,12 +24,12 @@ export const WebsiteStructuredData: React.FC = () => (
     <StructuredData
         type="WebSite"
         data={{
-            name: 'Radish',
-            url: 'https://radish-markets.vercel.app',
+            name: 'FanFate',
+            url: 'https://fan-fate-markets.vercel.app',
             description: 'Decentralized prediction markets for creator growth metrics across major platforms',
             potentialAction: {
                 '@type': 'SearchAction',
-                target: 'https://radish-markets.vercel.app/search?q={search_term_string}',
+                target: 'https://fan-fate-markets.vercel.app/search?q={search_term_string}',
                 'query-input': 'required name=search_term_string',
             },
         }}
@@ -40,11 +40,11 @@ export const OrganizationStructuredData: React.FC = () => (
     <StructuredData
         type="Organization"
         data={{
-            name: 'Radish',
-            url: 'https://radish-markets.vercel.app',
-            logo: 'https://radish-markets.vercel.app/logo.png',
+            name: 'FanFate',
+            url: 'https://fan-fate-markets.vercel.app',
+            logo: 'https://fan-fate-markets.vercel.app/logo.png',
             sameAs: [
-                'https://twitter.com/radish_bet',
+                'https://twitter.com/fan-fate_bet',
                 // Add other social profiles here
             ],
         }}

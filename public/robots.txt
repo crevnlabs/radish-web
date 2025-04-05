@@ -3,4 +3,4 @@ User-agent: *
 Allow: /
 
 # Sitemap location
-Sitemap: https://radish-markets.vercel.app/sitemap.xml 
+Sitemap: https://fan-fate-markets.vercel.app/sitemap.xml 

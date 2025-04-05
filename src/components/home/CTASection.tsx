@@ -35,7 +35,7 @@ export const CTASection = () => {
       className="py-20 w-full bg-gray-900 relative overflow-hidden"
     >
       <motion.div
-        className="absolute inset-0 bg-gradient-to-r from-neo-green/5 to-red-300/5"
+        className="absolute inset-0 bg-gradient-to-r from-neo-green/5 to-violet-300/5"
         animate={{
           opacity: [0.3, 0.5, 0.3],
         }}
@@ -48,7 +48,7 @@ export const CTASection = () => {
         <div className="flex flex-col items-start justify-between">
           <motion.h2
             variants={item}
-            className="text-4xl text-start md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-neo-green to-red-300 mb-10"
+            className="text-4xl text-start md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-neo-green to-violet-300 mb-10"
           >
             Ready to Join the Future of Creator Markets?
           </motion.h2>

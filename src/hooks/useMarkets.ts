@@ -3,7 +3,7 @@ import { chainConfig } from "@/config/contracts";
 import ERC20_ABI from "@/config/abis/ERC20";
 import PREDICTION_MARKET_ABI from "@/config/abis/PredictionMarket";
 import TOKENSABI from "@/config/abis/Tokens";
-import RADISH_CORE_ABI from "@/config/abis/RadishCore";
+import FANFATE_CORE_ABI from "@/config/abis/FanFateCore";
 import { readContract } from "@wagmi/core";
 import { request } from "graphql-request";
 import { useEffect, useState } from "react";
@@ -84,14 +84,14 @@ export const mockMarkets: Market[] = [
 
 export function useMarkets() {
   const { address } = useAccount();
-  const [markets, setMarkets] = useState<Market[]>(mockMarkets); // Start with mock markets
+  const [markets, setMarkets] = useState<Market[]>(mockMarkets); // Initialize with mockMarkets
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<Error | null>(null);
   const chainId = useChainId();
 
   const { data: marketCount } = useReadContract({
-    address: chainConfig[chainId].contracts.radishCore,
-    abi: RADISH_CORE_ABI,
+    address: chainConfig[chainId].contracts.fanFateCore,
+    abi: FANFATE_CORE_ABI,
     functionName: "marketCount",
     chainId: chainId,
   });
@@ -99,6 +99,7 @@ export function useMarkets() {
   useEffect(() => {
     const fetchMarkets = async () => {
       setIsLoading(true);
+      setError(null);
 
       try {
         // Fetch GraphQL data
@@ -122,73 +123,72 @@ export function useMarkets() {
           chainConfig[chainId].contracts.subgraphUrl,
           query
         );
-        console.log(chainId);
-        console.log(chainConfig[chainId].contracts.subgraphUrl);
-        console.log("data", data);
 
-        const marketsFromGraph = await Promise.all(
-          data.markets.map(async (m: any) => {
-            try {
-              // Fetch yesPrice and noPrice using readContract
-              const yesPrice = await readContract(config, {
-                address: m.marketContract,
-                abi: PREDICTION_MARKET_ABI,
-                functionName: "getTokenPrice",
-                chainId: chainId as any,
-                args: [true],
-              });
+        // If we get data, process it
+        if (data?.markets) {
+          const marketsFromGraph = await Promise.all(
+            data.markets.map(async (m: any) => {
+              try {
+                // Fetch yesPrice and noPrice using readContract
+                const yesPrice = await readContract(config, {
+                  address: m.marketContract,
+                  abi: PREDICTION_MARKET_ABI,
+                  functionName: "getTokenPrice",
+                  chainId: chainId as any,
+                  args: [true],
+                });
 
-              const noPrice = await readContract(config, {
-                address: m.marketContract,
-                abi: PREDICTION_MARKET_ABI,
-                functionName: "getTokenPrice",
-                chainId: chainId as any,
-                args: [false],
-              });
+                const noPrice = await readContract(config, {
+                  address: m.marketContract,
+                  abi: PREDICTION_MARKET_ABI,
+                  functionName: "getTokenPrice",
+                  chainId: chainId as any,
+                  args: [false],
+                });
 
-              console.log("yesPrice", yesPrice);
-              console.log("noPrice", noPrice);
+                return {
+                  id: m.id,
+                  title: m.question,
+                  endDate: m.endTime,
+                  creatorHandle: m.creator,
+                  platform: "twitter",
+                  metric: "followers",
+                  yesPrice: Number(yesPrice) / 1e18,
+                  noPrice: Number(noPrice) / 1e18,
+                  liquidity: m.totalStaked,
+                  volume24h: m.totalStaked,
+                  isOnChain: true,
+                  contractAddress: m.marketContract,
+                } as Market;
+              } catch (err) {
+                console.error("Error reading contract:", err);
+                return null;
+              }
+            })
+          );
 
-              return {
-                id: m.id,
-                title: m.question,
-                endDate: m.endTime,
-                creatorHandle: m.creator,
-                platform: "twitter", // Adjust platform if available
-                metric: "followers", // Adjust metric if available
-                yesPrice: Number(yesPrice) / 1e18,
-                noPrice: Number(noPrice) / 1e18,
-                liquidity: m.totalStaked,
-                volume24h: m.totalStaked, // Example value
-                isOnChain: true,
-                contractAddress: m.marketContract,
-              } as Market;
-            } catch (err) {
-              console.error("Error reading contract:", err);
-              return null;
-            }
-          })
-        );
-
-        // Filter out null results and merge with mock markets
-        const validMarkets = marketsFromGraph.filter((m) => m !== null);
-        setMarkets([...mockMarkets, ...validMarkets]);
-        console.log("markets", data.markets);
+          // Filter out null results and combine with mock markets
+          const validMarkets = marketsFromGraph.filter(
+            (m): m is Market => m !== null
+          );
+          setMarkets([...mockMarkets, ...validMarkets]);
+        }
       } catch (err) {
         console.error("Error fetching markets:", err);
-        setError(err as Error);
+        // Don't throw an error, just log it and keep using mock markets
+        console.log("Using mock markets as fallback");
       } finally {
         setIsLoading(false);
       }
     };
 
     fetchMarkets();
-  }, []);
+  }, [chainId]);
 
   return {
     markets,
-    isLoading: isLoading,
-    error: error,
+    isLoading,
+    error,
   };
 }
 
@@ -203,8 +203,8 @@ export function useCreateMarket() {
   const createMarket = async (question: string, endDate: string) => {
     const endTimestamp = Math.floor(new Date(endDate).getTime() / 1000);
     await writeContractAsync({
-      abi: RADISH_CORE_ABI,
-      address: chainConfig[chainId].contracts.radishCore,
+      abi: FANFATE_CORE_ABI,
+      address: chainConfig[chainId].contracts.fanFateCore,
       functionName: "createMarket",
       chainId: chainId,
       args: [question, BigInt(endTimestamp)],

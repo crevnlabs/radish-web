@@ -4,7 +4,7 @@ import { CustomConnectButton } from "@/components/ui/CustomConnectButton";
 const HeaderComponent = () => (
   <div className="flex flex-col md:flex-row justify-between items-center gap-8 md:gap-0 mb-8 border-b border-gray-200 pb-8">
     <h1 className="text-4xl md:text-6xl font-bold text-center md:text-left">
-      Rad or Not?
+      Long or Short, fan or fate?
     </h1>
     <div className="space-y-4 text-center md:text-right">
       <h3 className="text-xl md:text-3xl font-semibold">

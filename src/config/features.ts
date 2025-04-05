@@ -11,7 +11,7 @@ export const features = [
     description:
       "Built on Lens Blockchain with zktls enabled proofs for secure data verification",
     icon: "⛓️",
-    bgColor: "from-blue-500/20 to-red-300/10",
+    bgColor: "from-blue-500/20 to-violet-300/10",
   },
   {
     title: "Multi-Platform Support",
@@ -46,7 +46,7 @@ export const futureFeatures = [
     title: "Creator Partnerships",
     description: "Collaborations with influencers to drive platform adoption",
     icon: "🤝",
-    bgColor: "from-red-500/20 to-red-500/10",
+    bgColor: "from-violet-500/20 to-violet-500/10",
   },
   {
     title: "Oracle Integration",

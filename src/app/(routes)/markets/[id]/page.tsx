@@ -118,7 +118,7 @@ export default function MarketPage() {
 
   // Loading states
   if (marketLoading) return <Layout><LoadingSpinner /></Layout>;
-  if (marketError) return <Layout><div className="text-center text-red-500">Error: {marketError.message}</div></Layout>;
+  if (marketError) return <Layout><div className="text-center text-violet-500">Error: {marketError.message}</div></Layout>;
   if (!market) return <Layout><div className="text-center">Market not found</div></Layout>;
 
   return (

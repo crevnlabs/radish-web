@@ -1,4 +1,4 @@
-const RADISH_CORE_ABI = [
+const FANFATE_CORE_ABI = [
   {
     inputs: [
       {
@@ -280,4 +280,4 @@ const RADISH_CORE_ABI = [
   },
 ] as const;
 
-export default RADISH_CORE_ABI;
+export default FANFATE_CORE_ABI;

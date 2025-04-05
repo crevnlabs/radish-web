@@ -74,7 +74,7 @@ export const FeaturesSection = ({
       <div className="w-full mx-auto px-4 relative">
         <motion.h2
           variants={item}
-          className="text-4xl font-bold text-center mb-16 bg-clip-text text-transparent bg-gradient-to-r from-neo-green to-red-300"
+          className="text-4xl font-bold text-center mb-16 bg-clip-text text-transparent bg-gradient-to-r from-neo-green to-violet-300"
         >
           {title}
         </motion.h2>

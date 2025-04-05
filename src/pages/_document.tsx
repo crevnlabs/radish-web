@@ -16,10 +16,10 @@ export default function Document() {
                 <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
 
                 {/* Canonical URL */}
-                <link rel="canonical" href="https://radish-markets.vercel.app" />
+                <link rel="canonical" href="https://fanFate-markets.vercel.app" />
 
                 {/* Additional SEO meta tags */}
-                <meta name="application-name" content="Radish" />
+                <meta name="application-name" content="FanFate" />
                 <meta name="apple-mobile-web-app-capable" content="yes" />
                 <meta name="apple-mobile-web-app-status-bar-style" content="black" />
                 <meta name="format-detection" content="telephone=no" />
@@ -35,12 +35,12 @@ export default function Document() {
                         __html: JSON.stringify({
                             '@context': 'https://schema.org',
                             '@type': 'WebSite',
-                            name: 'Radish',
-                            url: 'https://radish-markets.vercel.app',
+                            name: 'FanFate',
+                            url: 'https://fanFate-markets.vercel.app',
                             description: 'Decentralized prediction markets for creator growth metrics across major platforms',
                             potentialAction: {
                                 '@type': 'SearchAction',
-                                target: 'https://radish-markets.vercel.app/search?q={search_term_string}',
+                                target: 'https://fanFate-markets.vercel.app/search?q={search_term_string}',
                                 'query-input': 'required name=search_term_string'
                             }
                         })

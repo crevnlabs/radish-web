@@ -14,7 +14,7 @@ export default function Home() {
       <VisionSection />
       <FeaturesSection
         useMarquee={true}
-        title="Why Trade on Radish?"
+        title="Why Trade on FanFate?"
         features={features}
         className="bg-black text-white"
       />

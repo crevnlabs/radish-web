@@ -17,7 +17,7 @@ export const RecentTrades = memo(({ trades }: RecentTradesProps) => (
           <div>
             <span
               className={
-                trade.type === "buy" ? "text-green-400" : "text-red-400"
+                trade.type === "buy" ? "text-green-400" : "text-violet-400"
               }
             >
               {trade.type.toUpperCase()} {trade.outcome.toUpperCase()}

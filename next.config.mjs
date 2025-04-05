@@ -1,10 +1,10 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  poweredByHeader: false, // Remove X-Powered-By header for security
+  poweredByHeader: false, // Remove X-Poweviolet-By header for security
   reactStrictMode: true,
   swcMinify: true,
   images: {
-    domains: ["radish-markets.vercel.app"], // Add your domain for optimized images
+    domains: ["fan-fate-markets.vercel.app"], // Add your domain for optimized images
     formats: ["image/avif", "image/webp"],
   },
   async headers() {

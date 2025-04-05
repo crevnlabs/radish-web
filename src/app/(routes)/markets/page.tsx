@@ -10,20 +10,22 @@ import { LoadingSpinner } from "@/components/ui/LoadingSpinner";
 
 // Constants
 const MASONRY_BREAKPOINTS = {
-  default: 3,
-  1100: 3,
+  default: 1,
+  1100: 1,
   700: 1,
   500: 1,
 };
 
 // Page Component
 const MarketsPage = () => {
-  const { markets, isLoading, error } = useMarkets();
+  const { markets = [], isLoading, error } = useMarkets();
 
   if (isLoading) {
     return (
       <Layout>
-        <LoadingSpinner />
+        <div className="flex justify-center items-center h-[60vh]">
+          <LoadingSpinner />
+        </div>
       </Layout>
     );
   }
@@ -31,7 +33,15 @@ const MarketsPage = () => {
   if (error) {
     return (
       <Layout>
-        <div className="text-center text-red-500">Error: {error.message}</div>
+        <div className="text-center text-violet-500">Error: {error.message}</div>
+      </Layout>
+    );
+  }
+
+  if (!markets || markets.length === 0) {
+    return (
+      <Layout>
+        <div className="text-center text-gray-500 mt-8">No markets available</div>
       </Layout>
     );
   }

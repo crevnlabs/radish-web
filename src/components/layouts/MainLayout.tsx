@@ -21,6 +21,11 @@ export default function Layout({
     const chainId = useChainId();
     const [balance, setBalance] = useState(0.0);
     const [faucetOpen, setFaucetOpen] = useState(false);
+    const [mounted, setMounted] = useState(false);
+
+    useEffect(() => {
+        setMounted(true);
+    }, []);
 
     useEffect(() => {
         if (address) {
@@ -46,30 +51,34 @@ export default function Layout({
                         <div className="flex items-center gap-4">
                             <Link href="/">
                                 <h1 className="font-bold text-3xl flex items-center gap-2">
-                                    <span className="text-neo-green hue-rotate-180">📈🥕</span>
-                                    <span className="text-neo-green">RADISH</span>
+                                    <span className="text-teal-300 hue-rotate-180">📈🥕</span>
+                                    <span className="text-teal-300">FANFATE</span>
                                 </h1>
                             </Link>
                             <div className="bg-yellow-600 text-black text-xs font-semibold px-2 py-1 rounded-md ml-2">
                                 TESTNET
                             </div>
-                            {address && (
+                            {mounted && (
                                 <nav className="hidden md:flex items-center gap-6 ml-8">
                                     <Link href="/markets">
                                         <span className="text-white hover:text-neo-green transition-colors">
                                             Markets
                                         </span>
                                     </Link>
-                                    <Link href="/create">
-                                        <span className="text-white hover:text-neo-green transition-colors">
-                                            Create
-                                        </span>
-                                    </Link>
-                                    <Link href="/my-predictions">
-                                        <span className="text-white hover:text-neo-green transition-colors">
-                                            My Positions
-                                        </span>
-                                    </Link>
+                                    {address && (
+                                        <>
+                                            <Link href="/create">
+                                                <span className="text-white hover:text-neo-green transition-colors">
+                                                    Create
+                                                </span>
+                                            </Link>
+                                            <Link href="/my-predictions">
+                                                <span className="text-white hover:text-neo-green transition-colors">
+                                                    My Positions
+                                                </span>
+                                            </Link>
+                                        </>
+                                    )}
                                 </nav>
                             )}
                         </div>
@@ -90,7 +99,7 @@ export default function Layout({
                 <div className="container mx-auto py-8">
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-8 ml-20">
                         <div>
-                            <h3 className="font-bold text-3xl mb-2">RADISH</h3>
+                            <h3 className="font-bold text-3xl mb-2">FANFATE</h3>
                             <p className="text-gray-400">
                                 Prediction markets for creators and their fans, earn rewards for
                                 betting on your favorite creators.
@@ -160,7 +169,7 @@ export default function Layout({
                     </div>
                     <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
                         <p>
-                            &copy; {new Date().getFullYear()} radish. All rights reserved.
+                            &copy; {new Date().getFullYear()} fan-fate. All rights reserved.
                         </p>
                     </div>
                 </div>

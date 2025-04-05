@@ -10,9 +10,9 @@ interface SEOHeadProps {
 }
 
 export const SEOHead: React.FC<SEOHeadProps> = ({
-    title = 'Radish - Bet on your favorite creators and earn rewards',
+    title = 'FanFate - Bet on your favorite creators and earn rewards',
     description = 'Decentralized prediction markets for creator growth metrics across YouTube, Twitter, TikTok, and Instagram. Place bets on creator growth and rivalry outcomes.',
-    canonicalUrl = 'https://radish-markets.vercel.app',
+    canonicalUrl = 'https://fan-fate-markets.vercel.app',
     ogImage = '/logo.png',
     ogType = 'website',
 }) => {
@@ -28,14 +28,14 @@ export const SEOHead: React.FC<SEOHeadProps> = ({
             <meta property="og:url" content={canonicalUrl} />
             <meta property="og:image" content={ogImage} />
             <meta property="og:type" content={ogType} />
-            <meta property="og:site_name" content="Radish" />
+            <meta property="og:site_name" content="FanFate" />
 
             {/* Twitter */}
             <meta name="twitter:card" content="summary_large_image" />
             <meta name="twitter:title" content={title} />
             <meta name="twitter:description" content={description} />
             <meta name="twitter:image" content={ogImage} />
-            <meta name="twitter:creator" content="@radish_bet" />
+            <meta name="twitter:creator" content="@fan-fate_bet" />
 
             {/* Favicon */}
             <link rel="icon" href="/logo.png" />

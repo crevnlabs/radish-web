@@ -33,7 +33,7 @@ export const TradingInterface = memo(({
         </TabsTrigger>
         <TabsTrigger
           value="no"
-          className="text-zinc-300 data-[state=active]:bg-red-500/20 data-[state=active]:text-red-400"
+          className="text-zinc-300 data-[state=active]:bg-violet-500/20 data-[state=active]:text-violet-400"
         >
           NO (${market.noPrice.toFixed(3)})
         </TabsTrigger>
@@ -100,7 +100,7 @@ export const TradingInterface = memo(({
         </div>
 
         {error && (
-          <p className="text-red-500 text-sm">
+          <p className="text-violet-500 text-sm">
             Error: {error.message}
           </p>
         )}

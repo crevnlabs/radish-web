@@ -134,7 +134,7 @@ export default function FaucetModal({ open, onOpenChange }: FaucetModalProps) {
             address: chainConfig[chainId].contracts.mockERC20,
             abi: ERC20_ABI,
             functionName: "approve",
-            args: [chainConfig[chainId].contracts.radishCore, MINT_AMOUNT],
+            args: [chainConfig[chainId].contracts.fanFateCore, MINT_AMOUNT],
         });
 
         console.log(approve);
@@ -177,7 +177,7 @@ export default function FaucetModal({ open, onOpenChange }: FaucetModalProps) {
                 <DialogHeader>
                     <DialogTitle className="flex items-center gap-2 justify-center text-2xl">
                         <Droplets className="w-6 h-6 text-neo-green" />
-                        <span className="bg-gradient-to-r from-neo-green to-red-300 text-transparent bg-clip-text">
+                        <span className="bg-gradient-to-r from-neo-green to-violet-300 text-transparent bg-clip-text">
                             USDC Token Faucet
                         </span>
                     </DialogTitle>

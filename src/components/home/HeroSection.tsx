@@ -46,7 +46,7 @@ export const HeroSection = () => {
         >
           <motion.div variants={item} className="relative inline-block">
             <motion.h1
-              className="text-6xl md:text-8xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-neo-green to-red-300 drop-shadow-md"
+              className="text-6xl md:text-8xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-neo-green to-violet-300 drop-shadow-md"
               animate={{
                 backgroundPosition: ["0%", "100%"],
                 transition: {
@@ -57,7 +57,7 @@ export const HeroSection = () => {
               }}
               style={{ backgroundSize: "200%" }}
             >
-              Radish Markets
+              FanFate Markets
             </motion.h1>
             <motion.h4
               className="text-2xl md:text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-white to-zinc-300 drop-shadow-sm"
@@ -74,7 +74,7 @@ export const HeroSection = () => {
               Say Rad or Not?
             </motion.h4>
             <motion.div
-              className="absolute -inset-1 rounded-xl bg-gradient-to-r from-neo-green/20 to-red-300/20 blur-xl"
+              className="absolute -inset-1 rounded-xl bg-gradient-to-r from-neo-green/20 to-violet-300/20 blur-xl"
               animate={{
                 opacity: [0.5, 0.8, 0.5],
                 scale: [1, 1.05, 1],
@@ -116,7 +116,7 @@ export const HeroSection = () => {
             whileHover={{ scale: 1.02 }}
             transition={{ type: "spring", stiffness: 300 }}
           >
-            <div className="absolute inset-0 bg-gradient-to-br from-neo-green/20 to-red-300/20" />
+            <div className="absolute inset-0 bg-gradient-to-br from-neo-green/20 to-violet-300/20" />
             <div className="absolute inset-0 flex items-center justify-center">
               <motion.div
                 initial={{ scale: 0.8, opacity: 0 }}
